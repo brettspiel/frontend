@@ -1,0 +1,11 @@
+{
+  "presets": [
+    "@babel/preset-typescript",
+    "@babel/preset-react",
+    "@babel/preset-env",
+    "@babel/preset-stage-2"
+  ],
+  "plugins": [
+    "transform-inline-environment-variables"
+  ]
+}
