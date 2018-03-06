@@ -49,6 +49,11 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin([
       {
+        from: "node_modules/sanitize.css/sanitize.css",
+        to: `${outPath}/assets/`,
+        flatten: true
+      },
+      {
         from: "node_modules/semantic-ui-css/semantic.min.css",
         to: `${outPath}/assets/`,
         flatten: true
