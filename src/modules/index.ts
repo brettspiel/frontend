@@ -1,10 +1,10 @@
-import {combineReducers} from "redux";
-import {counterReducer, CounterState} from './counter';
+import { combineReducers } from "redux";
+import { counterReducer, CounterState } from "./counter";
 
 export interface StoreState {
-  counter: CounterState
+  counter: CounterState;
 }
 
 export const reducers = combineReducers({
-  counter: counterReducer,
+  counter: counterReducer
 });

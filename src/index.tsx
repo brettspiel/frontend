@@ -4,8 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Routes } from "./Routes";
 // inject global css
 import "./global.css";
-import {Provider} from "react-redux";
-import {store} from "./store";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 class App extends React.PureComponent {
   render() {
