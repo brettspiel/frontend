@@ -10,18 +10,18 @@ export const initialState: CounterState = {
 };
 
 export const counterActions = {
-  increment: createAction("Counter/increment", (amount: number) => ({
-    type: "Counter/increment",
+  increment: createAction("counter/increment", (amount: number) => ({
+    type: "counter/increment",
     amount
   }))
 };
 
 const returnsOfActions = Object.values(counterActions).map($call);
-type AppAction = typeof returnsOfActions[number];
+type CounterAction = typeof returnsOfActions[number];
 
 export const counterReducer = (
   state: CounterState = initialState,
-  action: AppAction
+  action: CounterAction
 ): CounterState => {
   switch (action.type) {
     case getType(counterActions.increment): {
