@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import {CounterPageComponent} from "./CounterPageComponent";
-import {StoreState} from "../../reducers";
+import {StoreState} from "../../modules";
 import {CounterActionDispatcher} from "./CounterActionDispatcher";
 import {Dispatch} from "redux";
 

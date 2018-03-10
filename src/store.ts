@@ -1,7 +1,7 @@
 import {createStore, applyMiddleware, compose, Store} from 'redux';
 import {routerMiddleware} from 'react-router-redux';
 import thunk from 'redux-thunk';
-import {reducers, StoreState} from "./reducers";
+import {reducers, StoreState} from "./modules";
 import {history} from './history';
 
 const router = routerMiddleware(history);
