@@ -29,7 +29,8 @@
     "semantic-ui-css": "^2.3.0",
     "semantic-ui-react": "^0.78.2",
     "typesafe-actions": "^1.1.2",
-    "utility-types": "^1.1.0"
+    "utility-types": "^1.1.0",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.40",
@@ -46,6 +47,7 @@
     "@types/react-router-dom": "^4.2.4",
     "@types/react-router-redux": "^5.0.12",
     "@types/rimraf": "^2.0.2",
+    "@types/uuid": "^3.4.3",
     "babel-loader": "^8.0.0-beta.2",
     "babel-plugin-transform-inline-environment-variables": "^0.3.0",
     "copy-webpack-plugin": "^4.4.1",
