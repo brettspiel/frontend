@@ -60,6 +60,11 @@ module.exports = {
         from: "node_modules/semantic-ui-css/semantic.min.css",
         to: `${outPath}/assets/`,
         flatten: true
+      },
+      {
+        from: "node_modules/balloon-css/balloon.min.css",
+        to: `${outPath}/assets/`,
+        flatten: true
       }
     ]),
     new HtmlWebpackPlugin({
