@@ -3,7 +3,7 @@ import * as SocketIo from 'socket.io-client';
 export class CounterRepository {
   private socket: SocketIOClient.Socket;
   constructor(private serverUrl: string) {
-    this.socket = SocketIo(`${this.serverUrl}`, { path: 'counter' });
+    this.socket = SocketIo(`${this.serverUrl}/counter`);
   }
 
   get(): Promise<number> {
