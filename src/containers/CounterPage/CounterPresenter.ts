@@ -1,16 +1,21 @@
 import { Dispatch } from "redux";
 import { counterActions } from "../../modules/counter";
+import {CounterRepository} from "../../domain/repositories/CounterRepository";
 
-export class CounterActionDispatcher {
-  constructor(private dispatch: Dispatch<any>) {}
+export class CounterPresenter {
+  constructor(
+    private dispatch: Dispatch<any>,
+    private counterRepository: CounterRepository,
+  ) {}
 
-  increment(amount: number) {
-    this.dispatch(counterActions.increment(amount));
+  async increment(amount: number) {
+    const result = await this.counterRepository.add(amount);
+    this.dispatch(counterActions.set(result));
   }
 
   incrementAsync(amount: number) {
     setTimeout(() => {
-      this.dispatch(counterActions.increment(amount));
+      this.increment(amount);
     }, 1000);
   }
 }

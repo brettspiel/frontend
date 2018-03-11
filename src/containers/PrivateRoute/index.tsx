@@ -46,7 +46,7 @@ export class PrivateRouteHoC extends React.Component<
           render({
             ...props,
             user: userModel,
-            serverUrl: `${server.protocol}//${server.host}:${server.port}/`
+            serverUrl: `${server.protocol}//${server.host}:${server.port}`
           })
         }
       />

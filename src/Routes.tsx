@@ -12,7 +12,7 @@ export class Routes extends React.Component {
         <PrivateRoute
           path="/counter"
           exact
-          render={() => <CounterPage initialCount={10} />}
+          render={({ serverUrl }) => <CounterPage serverUrl={serverUrl} initialCount={10} />}
         />
         <PrivateRoute
           path="/"

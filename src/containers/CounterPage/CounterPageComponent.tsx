@@ -1,9 +1,9 @@
 import * as React from "react";
-import { CounterActionDispatcher } from "./CounterActionDispatcher";
+import { CounterPresenter } from "./CounterPresenter";
 
 export interface Props {
   count: number;
-  counterActionDispatcher: CounterActionDispatcher;
+  presenter: CounterPresenter;
 }
 
 export class CounterPageComponent extends React.Component<Props> {
@@ -11,11 +11,11 @@ export class CounterPageComponent extends React.Component<Props> {
     return (
       <div>
         <h1>count: {this.props.count}</h1>
-        <button onClick={() => this.props.counterActionDispatcher.increment(1)}>
+        <button onClick={() => this.props.presenter.increment(1)}>
           increment 1
         </button>
         <button
-          onClick={() => this.props.counterActionDispatcher.incrementAsync(1)}
+          onClick={() => this.props.presenter.incrementAsync(1)}
         >
           increment 1 async
         </button>

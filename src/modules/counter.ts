@@ -10,6 +10,10 @@ export const initialState: CounterState = {
 };
 
 export const counterActions = {
+  set: createAction("counter/set", (count: number) => ({
+    type: "counter/set",
+    count
+  })),
   increment: createAction("counter/increment", (amount: number) => ({
     type: "counter/increment",
     amount
@@ -24,6 +28,9 @@ export const counterReducer = (
   action: CounterAction
 ): CounterState => {
   switch (action.type) {
+    case getType(counterActions.set): {
+      return { count: action.count };
+    }
     case getType(counterActions.increment): {
       return { ...state, count: state.count + action.amount };
     }
