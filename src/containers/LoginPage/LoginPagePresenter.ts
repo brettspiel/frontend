@@ -1,6 +1,6 @@
 import { FormValues } from "./LoginPageComponent";
 import { FormikBag } from "formik";
-import { StatusRepository } from "../../repositories/StatusRepository";
+import { StatusRepository } from "../../domain/repositories/StatusRepository";
 import { Dispatch } from "redux";
 import { serverActions } from "../../modules/server";
 import { history } from "../../history";
