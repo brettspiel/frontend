@@ -1,0 +1,10 @@
+[data-balloon-error-message-target-element]::before {
+  background: url('data:image/svg+xml;charset=utf-8, %3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2236px%22%20height%3D%2212px%22%3E%3Cpath%20fill%3D%22rgba%28224, %20180, %20180, %200.9%29%22%20transform%3D%22rotate%280%29%22%20d%3D%22M2.658, 0%20C-13.615, 0%2050.938, 0%2034.662, 0%20C28.662, 0%2023.035, 12.002%2018.660, 12.002%20C14.285, 12.002%208.594, 0%202.658, 0%20Z%22/%3E%3C/svg%3E') no-repeat;
+  background-size: 100% auto;
+}
+
+[data-balloon-error-message-target-element]::after {
+  background: #fff6f6;
+  border: solid 1px #e0b4b4;
+  color: #9f3a38;
+}

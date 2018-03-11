@@ -1,0 +1,5 @@
+:global(.ui.form).form {
+  max-width: 320px;
+  width: 100%;
+  margin: 1em;
+}
