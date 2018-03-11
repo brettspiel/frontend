@@ -1,6 +1,9 @@
 const path = require("path");
+const os = require("os");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const AutoDllWebpackPlugin = require("autodll-webpack-plugin");
 const cssnext = require("postcss-cssnext");
 
 if (!process.env.NODE_ENV)
@@ -9,20 +12,27 @@ if (!process.env.NODE_ENV)
 const outPath = path.join(__dirname, "build");
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: {
+    app: "./src/index.tsx"
+  },
   output: {
     //  出力ファイルのディレクトリ名
     path: outPath,
     // 出力ファイル名
-    filename: "bundle.js"
+    filename: "[name]_[hash].js"
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
+        exclude: /node_modules/,
         use: [
           "babel-loader",
-          "ts-loader",
+          {
+            loader: "ts-loader",
+            options: {
+            }
+          },
         ]
       },
       {
@@ -70,11 +80,23 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       template: "src/index.html",
-      hash: true,
       minify: {
         collapseWhitespace: true
       }
-    })
+    }),
+    new AutoDllWebpackPlugin({
+      inject: true,
+      filename: '[name]_[hash].js',
+      entry: {
+        'react': ['react'],
+        'react_dom': ['react-dom'],
+        'react_router_dom': ['react-router-dom'],
+        'semantic_ui_react': ['semantic-ui-react'],
+        'formik': ['formik'],
+        'lodash': ['lodash']
+      }
+    }),
+    new HardSourceWebpackPlugin()
   ],
   devtool: "inline-source-map",
   devServer: {
