@@ -30,6 +30,7 @@
     "sanitize.css": "^5.0.0",
     "semantic-ui-css": "^2.3.0",
     "semantic-ui-react": "^0.78.3",
+    "socket.io-client": "^2.0.4",
     "typesafe-actions": "^1.1.2",
     "utility-types": "^1.1.0",
     "uuid": "^3.2.1"
@@ -51,6 +52,7 @@
     "@types/react-router-dom": "^4.2.4",
     "@types/react-router-redux": "^5.0.12",
     "@types/rimraf": "^2.0.2",
+    "@types/socket.io-client": "^1.4.32",
     "@types/uuid": "^3.4.3",
     "autodll-webpack-plugin": "^0.3.9",
     "babel-loader": "^8.0.0-beta.2",
