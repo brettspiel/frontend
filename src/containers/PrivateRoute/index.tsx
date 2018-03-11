@@ -15,7 +15,7 @@ export interface InjectedProps {
 
 export interface HijackedProps {
   render: ((
-    props: RouteComponentProps<any> & { user: User, serverUrl: string }
+    props: RouteComponentProps<any> & { user: User; serverUrl: string }
   ) => React.ReactNode);
 }
 
@@ -42,11 +42,13 @@ export class PrivateRouteHoC extends React.Component<
     return (
       <Route
         {...otherProps}
-        render={props => render({
-          ...props,
-          user: userModel,
-          serverUrl: `${server.protocol}//${server.host}:${server.port}/`
-        })}
+        render={props =>
+          render({
+            ...props,
+            user: userModel,
+            serverUrl: `${server.protocol}//${server.host}:${server.port}/`
+          })
+        }
       />
     );
   }
