@@ -17,8 +17,8 @@ export class Routes extends React.Component {
         <PrivateRoute
           path="/"
           exact
-          render={({ user }) => {
-            console.log(user);
+          render={({ user, serverUrl }) => {
+            console.log(user, serverUrl);
             return <h1>hello</h1>;
           }}
         />
