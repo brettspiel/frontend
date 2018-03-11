@@ -12,13 +12,15 @@ export class Routes extends React.Component {
         <PrivateRoute
           path="/counter"
           exact
-          render={({ serverUrl }) => <CounterPage serverUrl={serverUrl} initialCount={10} />}
+          render={({ socketManager }) => (
+            <CounterPage socket={socketManager.socket("/counter")} />
+          )}
         />
         <PrivateRoute
           path="/"
           exact
-          render={({ user, serverUrl }) => {
-            console.log(user, serverUrl);
+          render={({ user, socketManager }) => {
+            console.log(user, socketManager);
             return <h1>hello</h1>;
           }}
         />

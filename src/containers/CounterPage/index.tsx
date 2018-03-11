@@ -3,19 +3,21 @@ import { CounterPageComponent } from "./CounterPageComponent";
 import { StoreState } from "../../modules";
 import { CounterPresenter } from "./CounterPresenter";
 import { Dispatch } from "redux";
-import {CounterRepository} from "../../domain/repositories/CounterRepository";
+import { CounterRepository } from "../../domain/repositories/CounterRepository";
 
 export interface OwnProps {
-  serverUrl: string;
-  initialCount: number;
+  socket: SocketIOClient.Socket;
 }
 
-const mapStateToProps = (state: StoreState, ownProps: OwnProps) => ({
-  count: ownProps.initialCount + state.counter.count
+const mapStateToProps = (state: StoreState) => ({
+  count: state.counter.count
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>, ownProps: OwnProps) => ({
-  presenter: new CounterPresenter(dispatch, new CounterRepository(ownProps.serverUrl))
+  presenter: new CounterPresenter(
+    dispatch,
+    new CounterRepository(ownProps.socket)
+  )
 });
 
 export const CounterPage = connect(mapStateToProps, mapDispatchToProps)(
