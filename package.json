@@ -43,6 +43,7 @@
     "@babel/register": "^7.0.0-beta.40",
     "@types/axios": "^0.14.0",
     "@types/history": "^4.6.2",
+    "@types/prop-types": "^15.5.2",
     "@types/puppeteer": "^1.0.1",
     "@types/react": "^16.0.38",
     "@types/react-dom": "^16.0.4",

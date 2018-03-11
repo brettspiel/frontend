@@ -6,7 +6,7 @@ import { Routes } from "./Routes";
 import "./global.css";
 import { Provider } from "react-redux";
 import { store } from "./store";
-import {history} from "./history";
+import { history } from "./history";
 
 class App extends React.Component {
   render() {
