@@ -1,19 +1,23 @@
 import { connect } from "react-redux";
 import { CounterPageComponent } from "./CounterPageComponent";
 import { StoreState } from "../../modules";
-import { CounterActionDispatcher } from "./CounterActionDispatcher";
+import { CounterPresenter } from "./CounterPresenter";
 import { Dispatch } from "redux";
+import { CounterRepository } from "../../domain/repositories/CounterRepository";
 
 export interface OwnProps {
-  initialCount: number;
+  socket: SocketIOClient.Socket;
 }
 
-const mapStateToProps = (state: StoreState, ownProps: OwnProps) => ({
-  count: ownProps.initialCount + state.counter.count
+const mapStateToProps = (state: StoreState) => ({
+  count: state.counter.count
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  counterActionDispatcher: new CounterActionDispatcher(dispatch)
+const mapDispatchToProps = (dispatch: Dispatch<any>, ownProps: OwnProps) => ({
+  presenter: new CounterPresenter(
+    dispatch,
+    new CounterRepository(ownProps.socket)
+  )
 });
 
 export const CounterPage = connect(mapStateToProps, mapDispatchToProps)(

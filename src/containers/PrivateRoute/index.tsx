@@ -7,15 +7,21 @@ import { Route, RouteProps } from "react-router-dom";
 import { Redirect, RouteComponentProps } from "react-router";
 import { User } from "../../domain/models/User";
 import { Overwrite } from "utility-types";
+import * as io from "socket.io-client";
 
 export interface InjectedProps {
   user: UserState;
   server: ServerState;
 }
 
+export interface AdditionalRenderProps {
+  user: User;
+  socketManager: SocketIOClient.Manager;
+}
+
 export interface HijackedProps {
   render: ((
-    props: RouteComponentProps<any> & { user: User; serverUrl: string }
+    props: RouteComponentProps<any> & AdditionalRenderProps
   ) => React.ReactNode);
 }
 
@@ -46,7 +52,9 @@ export class PrivateRouteHoC extends React.Component<
           render({
             ...props,
             user: userModel,
-            serverUrl: `${server.protocol}//${server.host}:${server.port}/`
+            socketManager: io.Manager(
+              `${server.protocol}//${server.host}:${server.port}`
+            )
           })
         }
       />
