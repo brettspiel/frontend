@@ -1,6 +1,8 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
 import { Router } from "react-router-dom";
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
 import { Routes } from "./Routes";
 // inject global css
 import "./global.css";
@@ -12,9 +14,11 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <Router history={history}>
-          <Routes />
-        </Router>
+        <PersistGate persistor={persistStore(store)}>
+          <Router history={history}>
+            <Routes />
+          </Router>
+        </PersistGate>
       </Provider>
     );
   }
