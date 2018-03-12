@@ -1,5 +1,6 @@
 import * as React from "react";
 import { CounterPresenter } from "./CounterPresenter";
+import { GlobalMenu } from "../../components/GlobalMenu";
 
 export interface Props {
   count: number;
@@ -10,6 +11,7 @@ export class CounterPageComponent extends React.Component<Props> {
   render() {
     return (
       <div>
+        <GlobalMenu />
         <h1>count: {this.props.count}</h1>
         <button onClick={() => this.props.presenter.increment(1)}>
           increment 1
