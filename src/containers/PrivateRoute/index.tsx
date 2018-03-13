@@ -8,6 +8,7 @@ import { Redirect, RouteComponentProps } from "react-router";
 import { User } from "../../domain/models/User";
 import { Overwrite } from "utility-types";
 import * as io from "socket.io-client";
+import {PageLayout} from "../../components/PageLayout";
 
 export interface InjectedProps {
   user: UserState;
@@ -48,15 +49,15 @@ export class PrivateRouteHoC extends React.Component<
     return (
       <Route
         {...otherProps}
-        render={props =>
-          render({
+        render={props => (
+          <PageLayout render={() => render({
             ...props,
             user: userModel,
             socketManager: io.Manager(
               `${server.protocol}//${server.host}:${server.port}`
             )
-          })
-        }
+          })} />
+        )}
       />
     );
   }
