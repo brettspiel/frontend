@@ -13,7 +13,8 @@ export const userActions = {
   create: createAction("user/create", (name: string) => ({
     type: "user/create",
     name
-  }))
+  })),
+  delete: createAction("user/delete")
 };
 
 const returnsOfActions = Object.values(userActions).map($call);
@@ -29,6 +30,9 @@ export const userReducer = (
         id: uuid.v4(),
         name: action.name
       };
+    }
+    case getType(userActions.delete): {
+      return {};
     }
     default: {
       return state;
