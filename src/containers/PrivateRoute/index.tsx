@@ -8,7 +8,7 @@ import { Redirect, RouteComponentProps } from "react-router";
 import { User } from "../../domain/models/User";
 import { Overwrite } from "utility-types";
 import * as io from "socket.io-client";
-import {GlobalMenu} from "../../components/GlobalMenu";
+import {GlobalMenu} from "../GlobalMenu";
 
 export interface InjectedProps {
   user: UserState;

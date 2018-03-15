@@ -29,7 +29,7 @@ export class GlobalMenu extends React.Component<Props> {
               </Dropdown.Menu>
             </Dropdown>
 
-            <Dropdown item text={this.props.user.name} icon="user circle outline">
+            <Dropdown item text={this.props.user.name}>
               <Dropdown.Menu>
                 <Dropdown.Item>アカウント設定</Dropdown.Item>
                 <Dropdown.Divider />
