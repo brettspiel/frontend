@@ -8,7 +8,7 @@ import { Redirect, RouteComponentProps } from "react-router";
 import { User } from "../../domain/models/User";
 import { Overwrite } from "utility-types";
 import * as io from "socket.io-client";
-import {GlobalMenu} from "../GlobalMenu";
+import { GlobalMenu } from "../GlobalMenu";
 
 export interface InjectedProps {
   user: UserState;
@@ -50,13 +50,18 @@ export class PrivateRouteHoC extends React.Component<
       <Route
         {...otherProps}
         render={props => (
-          <GlobalMenu user={userModel} render={() => render({
-            ...props,
-            user: userModel,
-            socketManager: io.Manager(
-              `${server.protocol}//${server.host}:${server.port}`
-            )
-          })} />
+          <GlobalMenu
+            user={userModel}
+            render={() =>
+              render({
+                ...props,
+                user: userModel,
+                socketManager: io.Manager(
+                  `${server.protocol}//${server.host}:${server.port}`
+                )
+              })
+            }
+          />
         )}
       />
     );

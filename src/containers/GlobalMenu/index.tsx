@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
-import {GlobalMenuComponent} from "./GlobalMenuComponent";
-import {Dispatch} from "redux";
-import {userActions} from "../../modules/user";
+import { GlobalMenuComponent } from "./GlobalMenuComponent";
+import { Dispatch } from "redux";
+import { userActions } from "../../modules/user";
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   handleClickLogout: () => {
@@ -9,4 +9,6 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   }
 });
 
-export const GlobalMenu = connect(null, mapDispatchToProps)(GlobalMenuComponent);
+export const GlobalMenu = connect(null, mapDispatchToProps)(
+  GlobalMenuComponent
+);

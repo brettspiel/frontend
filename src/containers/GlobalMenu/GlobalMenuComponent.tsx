@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Menu, Dropdown } from "semantic-ui-react";
 import * as styles from "./styles.css";
-import {User} from "../../domain/models/User";
+import { User } from "../../domain/models/User";
 
 export interface Props {
   render: (() => React.ReactNode);
@@ -22,7 +22,6 @@ export class GlobalMenuComponent extends React.Component<Props> {
           />
 
           <Menu.Menu position="right">
-
             <Dropdown item text={this.props.user.name}>
               <Dropdown.Menu>
                 <Dropdown.Item>アカウント設定</Dropdown.Item>
@@ -35,14 +34,14 @@ export class GlobalMenuComponent extends React.Component<Props> {
                   </Dropdown>
                 </Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item onClick={this.props.handleClickLogout}>ログアウト</Dropdown.Item>
+                <Dropdown.Item onClick={this.props.handleClickLogout}>
+                  ログアウト
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </Menu.Menu>
         </Menu>
-        <div className={styles.content}>
-          {this.props.render()}
-        </div>
+        <div className={styles.content}>{this.props.render()}</div>
       </div>
     );
   }
