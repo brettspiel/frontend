@@ -50,7 +50,7 @@ export class PrivateRouteHoC extends React.Component<
       <Route
         {...otherProps}
         render={props => (
-          <GlobalMenu render={() => render({
+          <GlobalMenu user={userModel} render={() => render({
             ...props,
             user: userModel,
             socketManager: io.Manager(
