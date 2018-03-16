@@ -29,8 +29,12 @@ export function initialize<State>(defaultValue: State) {
     }
 
     render() {
-      return (
-        <Provider value={{ state: this.state, dispatch: this.setState.bind(this) }}>{this.props.children}</Provider>
+      return React.createElement(
+        Provider,
+        {
+          value: { state: this.state, dispatch: this.setState.bind(this) },
+          children: this.props.children
+        }
       );
     }
   }
@@ -38,12 +42,14 @@ export function initialize<State>(defaultValue: State) {
   const connect = <TProps extends {}>
   (mapToProps: MapToProps<State, TProps>) =>
     <ComponentProps extends {}>(Child: React.ComponentClass<ComponentProps>): React.SFC<any> => {
-    return props => (
-      <Consumer>
-        {ctx => (
-          <Child {...props} {...mapToProps(ctx.state, ctx.dispatch)} />
-        )}
-      </Consumer>
+    return props => React.createElement(
+      Consumer,
+      {
+        children: (ctx: CirquitContext<State>) => React.createElement(
+          Child,
+          Object.assign({}, props, mapToProps(ctx.state, ctx.dispatch))
+        )
+      }
     );
   }
 
