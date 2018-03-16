@@ -50,13 +50,6 @@
     "@babel/helper-explode-assignable-expression" "7.0.0-beta.40"
     "@babel/types" "7.0.0-beta.40"
 
-"@babel/helper-builder-react-jsx@7.0.0-beta.40":
-  version "7.0.0-beta.40"
-  resolved "https://registry.yarnpkg.com/@babel/helper-builder-react-jsx/-/helper-builder-react-jsx-7.0.0-beta.40.tgz#2a171b6c4939c6cd0bdc38cca261d1f3b32cedb1"
-  dependencies:
-    "@babel/types" "7.0.0-beta.40"
-    esutils "^2.0.0"
-
 "@babel/helper-call-delegate@7.0.0-beta.40":
   version "7.0.0-beta.40"
   resolved "https://registry.yarnpkg.com/@babel/helper-call-delegate/-/helper-call-delegate-7.0.0-beta.40.tgz#5d5000d0bf76c68ee6866961e0b7eb6e9ed52438"
@@ -263,10 +256,6 @@
   version "7.0.0-beta.40"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-import-meta/-/plugin-syntax-import-meta-7.0.0-beta.40.tgz#40b2f7508d418fe624148e81030e2355b689f104"
 
-"@babel/plugin-syntax-jsx@7.0.0-beta.40":
-  version "7.0.0-beta.40"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-jsx/-/plugin-syntax-jsx-7.0.0-beta.40.tgz#db44d52ff06f784be22f2659e694cc2cf97f99f9"
-
 "@babel/plugin-syntax-numeric-separator@7.0.0-beta.40":
   version "7.0.0-beta.40"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-numeric-separator/-/plugin-syntax-numeric-separator-7.0.0-beta.40.tgz#d63dd89919b94632310a83c8be4d50b5c479b3a5"
@@ -282,10 +271,6 @@
 "@babel/plugin-syntax-throw-expressions@7.0.0-beta.40":
   version "7.0.0-beta.40"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-throw-expressions/-/plugin-syntax-throw-expressions-7.0.0-beta.40.tgz#a0d8969dcbfece1d85d1938b4e9ecfac4e411682"
-
-"@babel/plugin-syntax-typescript@7.0.0-beta.40":
-  version "7.0.0-beta.40"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-typescript/-/plugin-syntax-typescript-7.0.0-beta.40.tgz#0cc8a5f8d03e5f5187e759ec8beb44ff251992a0"
 
 "@babel/plugin-transform-arrow-functions@7.0.0-beta.40":
   version "7.0.0-beta.40"
@@ -400,29 +385,6 @@
     "@babel/helper-call-delegate" "7.0.0-beta.40"
     "@babel/helper-get-function-arity" "7.0.0-beta.40"
 
-"@babel/plugin-transform-react-display-name@7.0.0-beta.40":
-  version "7.0.0-beta.40"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-display-name/-/plugin-transform-react-display-name-7.0.0-beta.40.tgz#2e9aba5d74da8ecee00d6d4bf68c833955355e4c"
-
-"@babel/plugin-transform-react-jsx-self@7.0.0-beta.40":
-  version "7.0.0-beta.40"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx-self/-/plugin-transform-react-jsx-self-7.0.0-beta.40.tgz#cbf0286ec9e52129840e16d1a173adb98e52fb97"
-  dependencies:
-    "@babel/plugin-syntax-jsx" "7.0.0-beta.40"
-
-"@babel/plugin-transform-react-jsx-source@7.0.0-beta.40":
-  version "7.0.0-beta.40"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx-source/-/plugin-transform-react-jsx-source-7.0.0-beta.40.tgz#7e62fe33f3e46c7f0d81d187d9c9aa348daa6488"
-  dependencies:
-    "@babel/plugin-syntax-jsx" "7.0.0-beta.40"
-
-"@babel/plugin-transform-react-jsx@7.0.0-beta.40":
-  version "7.0.0-beta.40"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx/-/plugin-transform-react-jsx-7.0.0-beta.40.tgz#93af0b0ef691cda86ab52d912b50f72eb538349d"
-  dependencies:
-    "@babel/helper-builder-react-jsx" "7.0.0-beta.40"
-    "@babel/plugin-syntax-jsx" "7.0.0-beta.40"
-
 "@babel/plugin-transform-regenerator@7.0.0-beta.40":
   version "7.0.0-beta.40"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-regenerator/-/plugin-transform-regenerator-7.0.0-beta.40.tgz#f8a89ce89a0fae8e9cdfc2f2768104811517374a"
@@ -452,12 +414,6 @@
 "@babel/plugin-transform-typeof-symbol@7.0.0-beta.40":
   version "7.0.0-beta.40"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-typeof-symbol/-/plugin-transform-typeof-symbol-7.0.0-beta.40.tgz#67f0b8a5dd298b0aa5b347c3b6738c9c7baf1bcf"
-
-"@babel/plugin-transform-typescript@7.0.0-beta.40":
-  version "7.0.0-beta.40"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-typescript/-/plugin-transform-typescript-7.0.0-beta.40.tgz#143c5e108bbf20d3e5cedacee035ea6656dc0794"
-  dependencies:
-    "@babel/plugin-syntax-typescript" "7.0.0-beta.40"
 
 "@babel/plugin-transform-unicode-regex@7.0.0-beta.40":
   version "7.0.0-beta.40"
@@ -508,16 +464,6 @@
     invariant "^2.2.2"
     semver "^5.3.0"
 
-"@babel/preset-react@^7.0.0-beta.40":
-  version "7.0.0-beta.40"
-  resolved "https://registry.yarnpkg.com/@babel/preset-react/-/preset-react-7.0.0-beta.40.tgz#ccc8f916b694c8ea4b4ccbd1584f873caf199557"
-  dependencies:
-    "@babel/plugin-syntax-jsx" "7.0.0-beta.40"
-    "@babel/plugin-transform-react-display-name" "7.0.0-beta.40"
-    "@babel/plugin-transform-react-jsx" "7.0.0-beta.40"
-    "@babel/plugin-transform-react-jsx-self" "7.0.0-beta.40"
-    "@babel/plugin-transform-react-jsx-source" "7.0.0-beta.40"
-
 "@babel/preset-stage-2@^7.0.0-beta.40":
   version "7.0.0-beta.40"
   resolved "https://registry.yarnpkg.com/@babel/preset-stage-2/-/preset-stage-2-7.0.0-beta.40.tgz#c88db5e0e7ebfde8460c9cd3bed9acd841830e72"
@@ -539,12 +485,6 @@
     "@babel/plugin-proposal-unicode-property-regex" "7.0.0-beta.40"
     "@babel/plugin-syntax-dynamic-import" "7.0.0-beta.40"
     "@babel/plugin-syntax-import-meta" "7.0.0-beta.40"
-
-"@babel/preset-typescript@^7.0.0-beta.40":
-  version "7.0.0-beta.40"
-  resolved "https://registry.yarnpkg.com/@babel/preset-typescript/-/preset-typescript-7.0.0-beta.40.tgz#7f04a10dfe775c3939d38b6d1cdba4d087e1acc8"
-  dependencies:
-    "@babel/plugin-transform-typescript" "7.0.0-beta.40"
 
 "@babel/register@^7.0.0-beta.40":
   version "7.0.0-beta.40"
@@ -2245,7 +2185,7 @@ esutils@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-1.1.6.tgz#c01ccaa9ae4b897c6d0c3e210ae52f3c7a844375"
 
-esutils@^2.0.0, esutils@^2.0.2:
+esutils@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
 

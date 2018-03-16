@@ -36,9 +36,7 @@
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.40",
-    "@babel/preset-react": "^7.0.0-beta.40",
     "@babel/preset-stage-2": "^7.0.0-beta.40",
-    "@babel/preset-typescript": "^7.0.0-beta.40",
     "@babel/register": "^7.0.0-beta.40",
     "@types/axios": "^0.14.0",
     "@types/history": "^4.6.2",
