@@ -17,7 +17,7 @@ interface MapToProps<State, TProps> {
 export function initialize<State>(defaultValue: State) {
   const cirquitContext: CirquitContext<State> = {
     state: defaultValue,
-    dispatch: () => console.log(1),
+    dispatch: () => null as never,
   }
 
   const { Provider, Consumer } = createReactContext<CirquitContext<State>>(cirquitContext);
