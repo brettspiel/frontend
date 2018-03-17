@@ -29,7 +29,7 @@ export interface Enhancer<InjectedProps extends object, NeedsProps extends objec
   ): React.ComponentClass<Diff<P, InjectedProps> & NeedsProps & { WrappedComponent: React.Component<P> }>
 }
 
-export function initialize<State>(defaultValue: State) {
+export function createWires<State>(defaultValue: State) {
   const cirquitContext: CirquitContext<State> = {
     state: defaultValue,
     dispatch: () => null as never,
