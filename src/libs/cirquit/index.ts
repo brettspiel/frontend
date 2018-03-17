@@ -1,17 +1,19 @@
 import * as React from "react";
 import createReactContext from "create-react-context";
 
-interface CirquitContext<State> {
+export interface CirquitContext<State> {
   state: State;
   dispatch: Dispatch<State>;
 }
 
-interface Dispatch<State> {
-  (nextState: State): void;
+export interface Dispatch<State> {
+  <K extends keyof State>(state: (Pick<State, K> | State | null)): void;
 }
 
-interface MapToProps<State, TProps> {
+export interface MapToProps<State, TProps> {
+  // (state: State): TProps;
   (state: State, dispatch: Dispatch<State>): TProps;
+  // (state: State, dispatch: Dispatch<State>, ownProps: OwnProps): TProps;
 }
 
 export function initialize<State>(defaultValue: State) {
@@ -39,7 +41,7 @@ export function initialize<State>(defaultValue: State) {
     }
   }
 
-  const connect = <TProps extends {}>
+  const connect = <TProps>
   (mapToProps: MapToProps<State, TProps>) =>
     <ComponentProps extends {}>(Child: React.ComponentClass<ComponentProps>): React.SFC<any> => {
     return props => React.createElement(
