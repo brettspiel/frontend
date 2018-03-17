@@ -1,8 +1,5 @@
 import * as React from "react";
-import { UserState } from "../../modules/user";
-import { ServerState } from "../../modules/server";
-import { connect } from "react-redux";
-import { StoreState } from "../../modules";
+import {connect, State} from "../../state";
 import { Route, RouteProps } from "react-router-dom";
 import { Redirect, RouteComponentProps } from "react-router";
 import { User } from "../../domain/models/User";
@@ -11,8 +8,8 @@ import * as io from "socket.io-client";
 import { GlobalMenu } from "../GlobalMenu";
 
 export interface InjectedProps {
-  user: UserState;
-  server: ServerState;
+  user?: User;
+  server?: State["server"];
 }
 
 export interface AdditionalRenderProps {
@@ -34,28 +31,23 @@ export class PrivateRouteHoC extends React.Component<
   render() {
     const { user, server, render, ...otherProps } = this.props;
 
-    if (!user.id || !user.name) {
+    if (!user) {
       return <Redirect to="/login" />;
     }
-    if (!server.protocol || !server.host || !server.port) {
+    if (!server) {
       return <Redirect to="/login" />;
     }
-
-    const userModel: User = {
-      id: user.id,
-      name: user.name
-    };
 
     return (
       <Route
         {...otherProps}
         render={props => (
           <GlobalMenu
-            user={userModel}
+            user={user}
             render={() =>
               render({
                 ...props,
-                user: userModel,
+                user,
                 socketManager: io.Manager(
                   `${server.protocol}//${server.host}:${server.port}`
                 )
