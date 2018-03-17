@@ -3,7 +3,7 @@ import {connect} from "./state";
 
 interface Props {
   count: number;
-  increment: Function;
+  increment: () => void;
 }
 
 class CntComponent extends React.Component<Props> {
@@ -13,10 +13,8 @@ class CntComponent extends React.Component<Props> {
 }
 
 export const Cnt = connect(
-  (state, dispatch) => {
-    return {
-      count: state.counter.count,
-      increment: () => dispatch({ counter: { count: state.counter.count + 1 } }),
-    }
-  }
+  (state, dispatch) => ({
+    count: state.counter.count,
+    increment: () => dispatch({ counter: { count: state.counter.count + 1 } }),
+  })
 )(CntComponent);

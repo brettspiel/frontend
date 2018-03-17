@@ -1,5 +1,6 @@
 import * as React from "react";
 import createReactContext from "create-react-context";
+import {Assign, Diff} from "utility-types";
 
 export interface CirquitContext<State> {
   state: State;
@@ -14,6 +15,18 @@ export interface MapToProps<State, OwnProps, TProps> {
   // (state: State): TProps;
   (state: State, dispatch: Dispatch<State>, ownProps: OwnProps): TProps;
   // (state: State, dispatch: Dispatch<State>, ownProps: OwnProps): TProps;
+}
+
+export interface Connect {
+  <State extends object, OwnProps extends object, TProps extends object>(
+    mapToProps: MapToProps<State, OwnProps, TProps>
+  ): Enhancer<TProps, OwnProps>;
+}
+
+export interface Enhancer<InjectedProps extends object, NeedsProps extends object> {
+  <P extends InjectedProps>(
+    component: React.Component<P>
+  ): React.ComponentClass<Diff<P, InjectedProps> & NeedsProps & { WrappedComponent: React.Component<P> }>
 }
 
 export function initialize<State>(defaultValue: State) {
@@ -45,18 +58,28 @@ export function initialize<State>(defaultValue: State) {
     }
   }
 
-  const connect = <OwnProps, TProps>
-  (mapToProps: MapToProps<State, OwnProps, TProps>) =>
-    (Child: React.ComponentClass<OwnProps>): React.SFC<any> => {
-    return props => React.createElement(
-      Consumer,
-      {
-        children: (ctx: CirquitContext<State>) => React.createElement(
-          Child,
-          Object.assign({}, props, mapToProps(ctx.state, ctx.dispatch, props))
-        )
+  const connect = <OwnProps extends object, TProps extends object>(
+    mapToProps: MapToProps<State, OwnProps, TProps>
+  ) => (
+    Cmp: React.ComponentClass<Assign<TProps, OwnProps>>
+  ): React.ComponentClass<Diff<OwnProps, TProps>> => {
+    return class Connected extends React.Component<Diff<OwnProps, TProps>> {
+      render() {
+        return React.createElement(
+          Consumer,
+          {
+            children: (ctx: CirquitContext<State>) => React.createElement(
+              Cmp,
+              Object.assign(
+                {},
+                this.props,
+                mapToProps(ctx.state, ctx.dispatch, this.props as OwnProps)
+              ) as Assign<TProps, OwnProps>
+            )
+          }
+        );
       }
-    );
+    }
   }
 
   return {
