@@ -68,10 +68,8 @@ export class PrivateRouteHoC extends React.Component<
   }
 }
 
-const mapStateToProps = (state: StoreState, ownProps: ExternalProps) => ({
-  ...ownProps,
+export const PrivateRoute = connect((state, _, ownProps) => ({
   user: state.user,
-  server: state.server
-});
-
-export const PrivateRoute = connect(mapStateToProps)(PrivateRouteHoC);
+  server: state.server,
+  ...ownProps
+}))(PrivateRouteHoC);

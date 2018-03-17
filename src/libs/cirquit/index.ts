@@ -10,9 +10,9 @@ export interface Dispatch<State> {
   <K extends keyof State>(state: (Pick<State, K> | State | null)): void;
 }
 
-export interface MapToProps<State, TProps> {
+export interface MapToProps<State, OwnProps, TProps> {
   // (state: State): TProps;
-  (state: State, dispatch: Dispatch<State>): TProps;
+  (state: State, dispatch: Dispatch<State>, ownProps: OwnProps): TProps;
   // (state: State, dispatch: Dispatch<State>, ownProps: OwnProps): TProps;
 }
 
@@ -45,15 +45,15 @@ export function initialize<State>(defaultValue: State) {
     }
   }
 
-  const connect = <TProps>
-  (mapToProps: MapToProps<State, TProps>) =>
-    <ComponentProps extends {}>(Child: React.ComponentClass<ComponentProps>): React.SFC<any> => {
+  const connect = <OwnProps, TProps>
+  (mapToProps: MapToProps<State, OwnProps, TProps>) =>
+    (Child: React.ComponentClass<OwnProps>): React.SFC<any> => {
     return props => React.createElement(
       Consumer,
       {
         children: (ctx: CirquitContext<State>) => React.createElement(
           Child,
-          Object.assign({}, props, mapToProps(ctx.state, ctx.dispatch))
+          Object.assign({}, props, mapToProps(ctx.state, ctx.dispatch, props))
         )
       }
     );

@@ -1,13 +1,11 @@
 import {initialize} from "./libs/cirquit/index";
+import {User} from "./domain/models/User";
 
 export interface State {
   counter: {
     count: number;
   };
-  user?: {
-    id: string;
-    name: string;
-  };
+  user?: User;
   server?: {
     protocol: "http:" | "https:";
     host: string;
