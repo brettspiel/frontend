@@ -30,6 +30,10 @@ export function initialize<State>(defaultValue: State) {
       this.state = defaultValue;
     }
 
+    componentDidUpdate() {
+      console.log("@this.state", this.state);
+    }
+
     render() {
       return React.createElement(
         Provider,
