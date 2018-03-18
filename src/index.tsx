@@ -6,11 +6,11 @@ import { PersistGate } from "redux-persist/integration/react";
 import { Routes } from "./Routes";
 // inject global css
 import "./global.css";
-import {Provider as P} from "react-redux";
+import { Provider as P } from "react-redux";
 import { store } from "./store";
 import { history } from "./history";
-import {Provider} from "./state";
-import {Cnt} from "./Cnt";
+import { Provider } from "./state";
+import { Cnt } from "./Cnt";
 
 class App extends React.Component {
   render() {

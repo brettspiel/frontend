@@ -1,6 +1,6 @@
 import { connect } from "../../state";
 import { GlobalMenuComponent } from "./GlobalMenuComponent";
-import {User} from "../../domain/models/User";
+import { User } from "../../domain/models/User";
 import * as React from "react";
 
 export interface OwnProps {
@@ -11,6 +11,4 @@ export interface OwnProps {
 export const GlobalMenu = connect((_, dispatch, ownProps: OwnProps) => ({
   handleClickLogout: () => dispatch({ user: undefined }),
   ...ownProps
-}))(
-  GlobalMenuComponent
-);
+}))(GlobalMenuComponent);

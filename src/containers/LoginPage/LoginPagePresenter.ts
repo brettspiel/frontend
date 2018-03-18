@@ -3,7 +3,7 @@ import { FormikBag } from "formik";
 import { StatusRepository } from "../../domain/repositories/StatusRepository";
 import { Dispatch } from "../../libs/cirquit";
 import { history } from "../../history";
-import {State} from "../../state";
+import { State } from "../../state";
 import * as uuid from "uuid";
 
 export type ValidationErrors = { [K in keyof Partial<FormValues>]: string };

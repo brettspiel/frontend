@@ -9,7 +9,8 @@ export interface OwnProps {
 
 export const CounterPage = connect((state, dispatch, ownProps: OwnProps) => ({
   count: state.counter.count,
-  presenter: new CounterPresenter(dispatch, new CounterRepository(ownProps.socket))
-}))(
-  CounterPageComponent
-);
+  presenter: new CounterPresenter(
+    dispatch,
+    new CounterRepository(ownProps.socket)
+  )
+}))(CounterPageComponent);

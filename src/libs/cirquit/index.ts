@@ -7,7 +7,7 @@ export interface CirquitContext<State> {
 }
 
 export interface Dispatch<State> {
-  <K extends keyof State>(state: (Pick<State, K> | State | null)): void;
+  <K extends keyof State>(state: Pick<State, K> | State | null): void;
 }
 
 export interface MapToProps<State, OwnProps, TProps> {
@@ -19,10 +19,12 @@ export interface MapToProps<State, OwnProps, TProps> {
 export function createWires<State>(defaultValue: State) {
   const cirquitContext: CirquitContext<State> = {
     state: defaultValue,
-    dispatch: () => null as never,
-  }
+    dispatch: () => null as never
+  };
 
-  const { Provider, Consumer } = createReactContext<CirquitContext<State>>(cirquitContext);
+  const { Provider, Consumer } = createReactContext<CirquitContext<State>>(
+    cirquitContext
+  );
 
   class CirquitProvider extends React.Component<{}, State> {
     constructor(props: {}) {
@@ -35,38 +37,31 @@ export function createWires<State>(defaultValue: State) {
     }
 
     render() {
-      return React.createElement(
-        Provider,
-        {
-          value: { state: this.state, dispatch: this.setState.bind(this) },
-          children: this.props.children
-        }
-      );
+      return React.createElement(Provider, {
+        value: { state: this.state, dispatch: this.setState.bind(this) },
+        children: this.props.children
+      });
     }
   }
 
   const connect = <OwnProps extends object, TProps extends object>(
     mapToProps: MapToProps<State, OwnProps, TProps>
-  ) => (
-    Cmp: React.ComponentClass<TProps>
-  ): React.ComponentClass<OwnProps> => {
+  ) => (Cmp: React.ComponentClass<TProps>): React.ComponentClass<OwnProps> => {
     return class Connected extends React.Component<OwnProps> {
       render() {
-        return React.createElement(
-          Consumer,
-          {
-            children: (ctx: CirquitContext<State>) => React.createElement(
+        return React.createElement(Consumer, {
+          children: (ctx: CirquitContext<State>) =>
+            React.createElement(
               Cmp,
               mapToProps(ctx.state, ctx.dispatch, this.props)
             )
-          }
-        );
+        });
       }
-    }
-  }
+    };
+  };
 
   return {
     Provider: CirquitProvider,
     connect
   };
-};
+}

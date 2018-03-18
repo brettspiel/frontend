@@ -1,5 +1,5 @@
-import {createWires} from "./libs/cirquit/index";
-import {User} from "./domain/models/User";
+import { createWires } from "./libs/cirquit/index";
+import { User } from "./domain/models/User";
 
 export interface State {
   counter: {
@@ -14,7 +14,7 @@ export interface State {
 }
 
 const initialState: State = {
-  counter: { count: 0 },
+  counter: { count: 0 }
 };
 
 export const { Provider, connect } = createWires(initialState);

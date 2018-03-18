@@ -1,7 +1,7 @@
 import * as React from "react";
-import {connect, State} from "../../state";
+import { connect, State } from "../../state";
 import { Route, RouteProps } from "react-router-dom";
-import {Redirect, RouteComponentProps} from "react-router";
+import { Redirect, RouteComponentProps } from "react-router";
 import { User } from "../../domain/models/User";
 import { Assign } from "utility-types";
 import * as io from "socket.io-client";
@@ -61,9 +61,9 @@ export class PrivateRouteHoC extends React.Component<
 }
 
 export const PrivateRoute = connect((state: State, _, ownProps: OwnProps) => {
-  return ({
+  return {
     user: state.user,
     server: state.server,
     ...ownProps
-  });
+  };
 })(PrivateRouteHoC);
