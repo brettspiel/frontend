@@ -8,6 +8,7 @@ export class CounterPresenter {
     private counterRepository: CounterRepository
   ) {
     this.counterRepository.onUpdate(count => {
+      console.log("@count", count);
       this.dispatch({ counter: { count } });
     });
   }

@@ -7,10 +7,12 @@ export interface OwnProps {
   socket: SocketIOClient.Socket;
 }
 
-export const CounterPage = connect((state, dispatch, ownProps: OwnProps) => ({
-  count: state.counter.count,
-  presenter: new CounterPresenter(
-    dispatch,
-    new CounterRepository(ownProps.socket)
-  )
-}))(CounterPageComponent);
+export const CounterPage = connect((state, dispatch, ownProps: OwnProps) => {
+  return ({
+    count: state.counter.count,
+    presenter: new CounterPresenter(
+      dispatch,
+      new CounterRepository(ownProps.socket)
+    )
+  });
+})(CounterPageComponent);

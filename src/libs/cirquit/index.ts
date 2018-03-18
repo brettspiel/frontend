@@ -33,7 +33,7 @@ export function createWires<State>(defaultValue: State) {
     }
 
     componentDidUpdate() {
-      console.log("@this.state", this.state);
+      // console.log("@this.state", this.state);
     }
 
     render() {
