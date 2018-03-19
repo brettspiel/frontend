@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Route, Switch } from "react-router-dom";
-import { CounterPage } from "./containers/CounterPage";
-import { LoginPage } from "./containers/LoginPage";
-import { PrivateRoute } from "./containers/PrivateRoute";
+import { CounterPage } from "./features/CounterPage";
+import { LoginPage } from "./features/LoginPage";
+import { PrivateRoute } from "./features/PrivateRoute";
 
 export class Routes extends React.Component {
   render() {
