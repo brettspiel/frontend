@@ -1,15 +1,13 @@
-import { Dispatch } from "redux";
-import { counterActions } from "../../modules/counter";
+import { Dispatch } from "../../libs/cirquit";
+import { State } from "../../state";
 import { CounterRepository } from "../../domain/repositories/CounterRepository";
 
 export class CounterPresenter {
   constructor(
-    private dispatch: Dispatch<any>,
+    private dispatch: Dispatch<State>,
     private counterRepository: CounterRepository
   ) {
-    this.counterRepository.onUpdate(count => {
-      this.dispatch(counterActions.set(count));
-    });
+    this.counterRepository.onUpdate(count => this.dispatch({ counter: { count } }));
   }
 
   increment(amount: number) {

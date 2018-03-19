@@ -1,15 +1,15 @@
 import { FormValues } from "./LoginPageComponent";
 import { FormikBag } from "formik";
 import { StatusRepository } from "../../domain/repositories/StatusRepository";
-import { Dispatch } from "redux";
-import { serverActions } from "../../modules/server";
+import { Dispatch } from "../../libs/cirquit";
 import { history } from "../../history";
-import { userActions } from "../../modules/user";
+import { State } from "../../state";
+import * as uuid from "uuid";
 
 export type ValidationErrors = { [K in keyof Partial<FormValues>]: string };
 
 export class LoginPagePresenter {
-  constructor(private dispatch: Dispatch<any>) {}
+  constructor(private dispatch: Dispatch<State>) {}
 
   handleValidate = (values: FormValues): ValidationErrors => {
     const errors: ValidationErrors = {};
@@ -34,8 +34,10 @@ export class LoginPagePresenter {
       const host = values.serverHost;
       const port = values.serverPort;
       await new StatusRepository(protocol, host, port).get();
-      this.dispatch(userActions.create(values.userName));
-      this.dispatch(serverActions.setConnectionInfo(protocol, host, port));
+      this.dispatch({
+        user: { id: uuid.v4(), name: values.userName },
+        server: { protocol, host, port }
+      });
       history.push("/counter");
     } catch {
       formikBag.setSubmitting(false);

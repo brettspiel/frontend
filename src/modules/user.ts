@@ -1,5 +1,5 @@
 import { createAction, getType } from "typesafe-actions";
-import uuid = require("uuid");
+import * as uuid from "uuid";
 import { $call } from "utility-types";
 
 export interface UserState {

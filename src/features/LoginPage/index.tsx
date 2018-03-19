@@ -1,10 +1,7 @@
-import { connect } from "react-redux";
+import { connect } from "../../state";
 import { LoginPageComponent } from "./LoginPageComponent";
 import { LoginPagePresenter } from "./LoginPagePresenter";
-import { Dispatch } from "redux";
 
-const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+export const LoginPage = connect((_, dispatch) => ({
   presenter: new LoginPagePresenter(dispatch)
-});
-
-export const LoginPage = connect(null, mapDispatchToProps)(LoginPageComponent);
+}))(LoginPageComponent);
