@@ -8,11 +8,11 @@ export interface OwnProps {
 }
 
 export const CounterPage = connect((state, dispatch, ownProps: OwnProps) => {
-  return ({
+  return {
     count: state.counter.count,
     presenter: new CounterPresenter(
       dispatch,
       new CounterRepository(ownProps.socket)
     )
-  });
+  };
 })(CounterPageComponent);

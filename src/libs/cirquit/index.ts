@@ -32,11 +32,8 @@ export function createWires<State>(defaultValue: State) {
       this.state = defaultValue;
     }
 
-    componentDidUpdate() {
-      // console.log("@this.state", this.state);
-    }
-
     render() {
+      console.log("@this.state", this.state);
       return React.createElement(Provider, {
         value: { state: this.state, dispatch: this.setState.bind(this) },
         children: this.props.children
@@ -50,11 +47,12 @@ export function createWires<State>(defaultValue: State) {
     return class Connected extends React.Component<OwnProps> {
       render() {
         return React.createElement(Consumer, {
-          children: (ctx: CirquitContext<State>) =>
-            React.createElement(
+          children: (ctx: CirquitContext<State>) => {
+            return React.createElement(
               Cmp,
               mapToProps(ctx.state, ctx.dispatch, this.props)
             )
+          }
         });
       }
     };
