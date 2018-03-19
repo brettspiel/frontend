@@ -1,8 +1,9 @@
 import * as React from "react";
 import { Route, Switch } from "react-router-dom";
-import { CounterPage } from "./features/CounterPage";
 import { LoginPage } from "./features/LoginPage";
 import { PrivateRoute } from "./features/PrivateRoute";
+import {withSocket} from "./containers/withSocket";
+import {CounterPage} from "./features/CounterPage";
 
 export class Routes extends React.Component {
   render() {
@@ -12,15 +13,13 @@ export class Routes extends React.Component {
         <PrivateRoute
           path="/counter"
           exact
-          render={({ socketManager }) => (
-            <CounterPage socket={socketManager.socket("/counter")} />
-          )}
+          render={() => withSocket(socketManager => <CounterPage socket={socketManager.socket("/counter")}/>)}
         />
         <PrivateRoute
           path="/"
           exact
-          render={({ user, socketManager }) => {
-            console.log(user, socketManager);
+          render={({ user }) => {
+            console.log(user);
             return <h1>hello</h1>;
           }}
         />

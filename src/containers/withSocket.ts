@@ -8,10 +8,14 @@ export interface Props {
   server: ServerState;
 }
 
-export const withSocket = <P extends object>(render: (socketManager: SocketIOClient.Manager) => React.ReactElement<P>) => {
+export const withSocket = (
+  render: (socketManager: SocketIOClient.Manager) => React.ReactNode,
+  fallbackRender: () => React.ReactNode = () => null,
+) => {
   class WithSocket extends React.Component<Props> {
     render() {
-      const { server } = this.props;
+      const {server} = this.props;
+      if (!server.host || !server.port || !server.protocol) return fallbackRender();
 
       const manager = io.Manager(
         `${server.protocol}//${server.host}:${server.port}`
@@ -24,5 +28,5 @@ export const withSocket = <P extends object>(render: (socketManager: SocketIOCli
     server: state.server
   });
 
-  return connect(mapStateToProps)(WithSocket);
+  return React.createElement(connect(mapStateToProps)(WithSocket));
 }
