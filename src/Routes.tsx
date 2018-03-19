@@ -1,27 +1,30 @@
 import * as React from "react";
 import { Route, Switch } from "react-router-dom";
 import { LoginPage } from "./features/LoginPage";
-import { PrivateRoute } from "./features/PrivateRoute";
 import {withSocket} from "./containers/withSocket";
 import {CounterPage} from "./features/CounterPage";
+import {withLogin} from "./containers/withLogin";
 
 export class Routes extends React.Component {
   render() {
     return (
       <Switch>
-        <Route path="/login" exact render={() => <LoginPage />} />
-        <PrivateRoute
+        <Route
+          path="/login"
+          exact
+          render={() => <LoginPage />} />
+        <Route
           path="/counter"
           exact
-          render={() => withSocket(socketManager => <CounterPage socket={socketManager.socket("/counter")}/>)}
+          render={() => withLogin(() => withSocket(socketManager => <CounterPage socket={socketManager.socket("/counter")}/>))}
         />
-        <PrivateRoute
+        <Route
           path="/"
           exact
-          render={({ user }) => {
+          render={() => withLogin(user => {
             console.log(user);
             return <h1>hello</h1>;
-          }}
+          })}
         />
       </Switch>
     );
