@@ -7,10 +7,7 @@ export class CounterPresenter {
     private dispatch: Dispatch<State>,
     private counterRepository: CounterRepository
   ) {
-    this.counterRepository.onUpdate(count => {
-      console.log("@count", count);
-      this.dispatch({ counter: { count } });
-    });
+    this.counterRepository.onUpdate(count => this.dispatch({ counter: { count } }));
   }
 
   increment(amount: number) {
