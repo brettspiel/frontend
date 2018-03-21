@@ -70,12 +70,14 @@ module.exports = {
       inject: true,
       filename: '[name]_[hash].js',
       entry: {
-        'react': ['react'],
-        'react_dom': ['react-dom'],
-        'react_router_dom': ['react-router-dom'],
-        'semantic_ui_react': ['semantic-ui-react'],
-        'formik': ['formik'],
-        'lodash': ['lodash']
+        dll: [
+          'react',
+          'react-dom',
+          'react-router-dom',
+          'semantic-ui-react',
+          'formik',
+          'lodash'
+        ]
       }
     }),
     new HardSourceWebpackPlugin()
