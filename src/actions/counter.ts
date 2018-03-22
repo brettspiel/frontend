@@ -1,11 +1,9 @@
-import produce from "immer";
-import {State} from "../state";
-import {cirquit} from "../libs/redux-cirquit";
+import {createAction} from "./utils";
 
-export const add = (amount: number) => cirquit<State>(state => produce(state, draft => {
-  draft.counter.count += amount;
-}));
+export const add = (amount: number) => createAction(state => {
+  state.counter.count += amount;
+})
 
-export const setCount = (count: number) => cirquit<State>(state => produce(state, draft => {
-  draft.counter.count = count;
-}));
+export const setCount = (count: number) => createAction(state => {
+  state.counter.count = count;
+});
