@@ -25,11 +25,13 @@ export interface CirquitReducer {
 
 export interface CirquitAction extends Action {
   type: '@cirquit/action';
+  name: string;
   reducer: CirquitReducer;
 }
 
 export const cirquit = (reducer: CirquitReducer): CirquitAction => ({
   type: '@cirquit/action',
+  name: reducer.name,
   reducer
 });
 
