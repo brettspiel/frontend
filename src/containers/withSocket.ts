@@ -2,7 +2,7 @@ import * as React from "react";
 import * as io from "socket.io-client";
 import { connect } from "react-redux";
 import { StoreState } from "../modules";
-import {CirquitState} from "../modules/cirquit";
+import {CirquitState} from "../modules/";
 
 export interface Props {
   server: CirquitState["server"];

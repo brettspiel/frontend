@@ -1,6 +1,7 @@
 import { Dispatch } from "redux";
 import { CounterRepository } from "../../domain/repositories/CounterRepository";
-import {cirquit} from "../../modules/cirquit";
+import {cirquit} from "../../libs/redux-cirquit";
+import {CirquitState} from "../../modules";
 
 export class CounterPresenter {
   constructor(
@@ -8,7 +9,7 @@ export class CounterPresenter {
     private counterRepository: CounterRepository
   ) {
     this.counterRepository.onUpdate(count => {
-      this.dispatch(cirquit(state => ({
+      this.dispatch(cirquit<CirquitState>(state => ({
         ...state,
         counter: { count: count + 1 }
       })));
