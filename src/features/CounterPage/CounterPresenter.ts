@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
-import { counterActions } from "../../modules/counter";
 import { CounterRepository } from "../../domain/repositories/CounterRepository";
+import { setCount } from "../../actions/counter";
 
 export class CounterPresenter {
   constructor(
@@ -8,17 +8,21 @@ export class CounterPresenter {
     private counterRepository: CounterRepository
   ) {
     this.counterRepository.onUpdate(count => {
-      this.dispatch(counterActions.set(count));
+      this.dispatch(setCount(count));
     });
   }
 
-  increment(amount: number) {
-    this.counterRepository.add(amount).catch();
+  handleClickIncrement(amount: number) {
+    this.increment(amount);
   }
 
-  incrementAsync(amount: number) {
+  handleClickIncrementAsync(amount: number) {
     setTimeout(() => {
       this.increment(amount);
     }, 1000);
+  }
+
+  private increment(amount: number) {
+    this.counterRepository.add(amount).catch();
   }
 }

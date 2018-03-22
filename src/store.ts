@@ -3,8 +3,13 @@ import { routerMiddleware } from "react-router-redux";
 import thunk from "redux-thunk";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { reducers, StoreState } from "./modules";
 import { history } from "./history";
+import { createCirquitReducer } from "./libs/redux-cirquit";
+import { initialState, State } from "./state";
+import { setAutoFreeze } from "immer";
+
+// redux-persist mutates state, so we need cancel auto freeze feature in immer
+setAutoFreeze(false);
 
 const router = routerMiddleware(history);
 
@@ -18,9 +23,7 @@ const persistedReducer = persistReducer(
     key: "root",
     storage
   },
-  reducers
+  createCirquitReducer(initialState)
 );
 
-export const store = createStore(persistedReducer, enhancer) as Store<
-  StoreState
->;
+export const store = createStore(persistedReducer, enhancer) as Store<State>;

@@ -1,35 +1,27 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { StoreState } from "../modules";
-import { UserState } from "../modules/user";
 import { User } from "../domain/models/User";
 import { Redirect } from "react-router";
 import { GlobalMenu } from "../features/GlobalMenu";
+import { State } from "../state";
 
 export interface Props {
-  user: UserState;
+  user: User;
 }
 
 export const withLogin = (render: (user: User) => React.ReactNode) => {
   class WithLogin extends React.Component<Props> {
     render() {
       const { user } = this.props;
-      if (!user.id || !user.name) {
+      if (!user) {
         return <Redirect to="/login" />;
       }
 
-      const refinedUser: User = {
-        id: user.id,
-        name: user.name
-      };
-
-      return (
-        <GlobalMenu user={refinedUser} render={() => render(refinedUser)} />
-      );
+      return <GlobalMenu user={user} render={() => render(user)} />;
     }
   }
 
-  const mapStateToProps = (state: StoreState) => ({
+  const mapStateToProps = (state: State) => ({
     user: state.user
   });
 
