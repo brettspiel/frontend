@@ -12,7 +12,7 @@ export interface CirquitAction<State> extends Action {
   reducer: CirquitReducer<State>;
 }
 
-export const cirquit = <State>(reducer: CirquitReducer<State>): CirquitAction<State> => ({
+export const createCirquitAction = <State>(reducer: CirquitReducer<State>): CirquitAction<State> => ({
   type: CirquitActionType,
   name: reducer.name,
   reducer
