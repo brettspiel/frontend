@@ -11,10 +11,10 @@ export class CounterPageComponent extends React.Component<Props> {
     return (
       <div>
         <h1>count: {this.props.count}</h1>
-        <button onClick={() => this.props.presenter.increment(1)}>
+        <button onClick={() => this.props.presenter.handleClickIncrement(1)}>
           increment 1
         </button>
-        <button onClick={() => this.props.presenter.incrementAsync(1)}>
+        <button onClick={() => this.props.presenter.handleClickIncrementAsync(1)}>
           increment 1 async
         </button>
       </div>

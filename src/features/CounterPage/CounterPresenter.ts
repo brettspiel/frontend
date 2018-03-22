@@ -12,13 +12,17 @@ export class CounterPresenter {
     });
   }
 
-  increment(amount: number) {
-    this.counterRepository.add(amount).catch();
+  handleClickIncrement(amount: number) {
+    this.increment(amount);
   }
 
-  incrementAsync(amount: number) {
+  handleClickIncrementAsync(amount: number) {
     setTimeout(() => {
       this.increment(amount);
     }, 1000);
+  }
+
+  private increment(amount: number) {
+    this.counterRepository.add(amount).catch();
   }
 }
