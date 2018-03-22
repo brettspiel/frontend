@@ -4,6 +4,7 @@ import { LoginPage } from "./features/LoginPage";
 import { withSocket } from "./containers/withSocket";
 import { CounterPage } from "./features/CounterPage";
 import { withLogin } from "./containers/withLogin";
+import {LoungePageComponent} from "./features/LoungePage/LoungePageComponent";
 
 export class Routes extends React.Component {
   render() {
@@ -25,10 +26,9 @@ export class Routes extends React.Component {
           path="/"
           exact
           render={() =>
-            withLogin(user => {
-              console.log(user);
-              return <h1>hello</h1>;
-            })
+            withLogin(user => (
+              <LoungePageComponent user={user}/>
+            ))
           }
         />
       </Switch>
