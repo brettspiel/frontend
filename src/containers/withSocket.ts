@@ -1,11 +1,10 @@
 import * as React from "react";
 import * as io from "socket.io-client";
 import { connect } from "react-redux";
-import { StoreState } from "../modules";
-import {CirquitState} from "../modules/";
+import {State} from "../state";
 
 export interface Props {
-  server: CirquitState["server"];
+  server: State["server"];
 }
 
 export const withSocket = (
@@ -26,8 +25,8 @@ export const withSocket = (
     }
   }
 
-  const mapStateToProps = (state: StoreState) => ({
-    server: state.cirquit.server
+  const mapStateToProps = (state: State) => ({
+    server: state.server
   });
 
   return React.createElement(connect(mapStateToProps)(WithSocket));

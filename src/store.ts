@@ -3,8 +3,9 @@ import { routerMiddleware } from "react-router-redux";
 import thunk from "redux-thunk";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { reducers, StoreState } from "./modules";
 import { history } from "./history";
+import {createCirquitReducer} from "./libs/redux-cirquit";
+import {initialState, State} from "./state";
 
 const router = routerMiddleware(history);
 
@@ -18,9 +19,9 @@ const persistedReducer = persistReducer(
     key: "root",
     storage
   },
-  reducers
+  createCirquitReducer(initialState)
 );
 
 export const store = createStore(persistedReducer, enhancer) as Store<
-  StoreState
+  State
 >;

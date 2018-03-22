@@ -5,7 +5,7 @@ import { Dispatch } from "redux";
 import { history } from "../../history";
 import {cirquit} from "../../libs/redux-cirquit";
 import uuid = require("uuid");
-import {CirquitState} from "../../modules";
+import {State} from "../../state";
 
 export type ValidationErrors = { [K in keyof Partial<FormValues>]: string };
 
@@ -35,7 +35,7 @@ export class LoginPagePresenter {
       const host = values.serverHost;
       const port = values.serverPort;
       await new StatusRepository(protocol, host, port).get();
-      this.dispatch(cirquit<CirquitState>(state => ({
+      this.dispatch(cirquit<State>(state => ({
         ...state,
         user: {
           id: uuid.v4(),

@@ -1,9 +1,9 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { StoreState } from "../modules";
 import { User } from "../domain/models/User";
 import { Redirect } from "react-router";
 import { GlobalMenu } from "../features/GlobalMenu";
+import {State} from "../state";
 
 export interface Props {
   user: User;
@@ -23,8 +23,8 @@ export const withLogin = (render: (user: User) => React.ReactNode) => {
     }
   }
 
-  const mapStateToProps = (state: StoreState) => ({
-    user: state.cirquit.user
+  const mapStateToProps = (state: State) => ({
+    user: state.user
   });
 
   return React.createElement(connect(mapStateToProps)(WithLogin));
