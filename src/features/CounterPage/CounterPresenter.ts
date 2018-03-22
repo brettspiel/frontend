@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { CounterRepository } from "../../domain/repositories/CounterRepository";
-import {setCount} from "../../actions/counter";
+import { setCount } from "../../actions/counter";
 
 export class CounterPresenter {
   constructor(

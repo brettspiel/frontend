@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { User } from "../domain/models/User";
 import { Redirect } from "react-router";
 import { GlobalMenu } from "../features/GlobalMenu";
-import {State} from "../state";
+import { State } from "../state";
 
 export interface Props {
   user: User;
@@ -17,9 +17,7 @@ export const withLogin = (render: (user: User) => React.ReactNode) => {
         return <Redirect to="/login" />;
       }
 
-      return (
-        <GlobalMenu user={user} render={() => render(user)} />
-      );
+      return <GlobalMenu user={user} render={() => render(user)} />;
     }
   }
 

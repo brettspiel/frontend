@@ -1,6 +1,6 @@
-import {Action} from "redux";
+import { Action } from "redux";
 
-const CirquitActionType = '@cirquit/action';
+const CirquitActionType = "@cirquit/action";
 
 export interface CirquitReducer<State> {
   (state: State): State;
@@ -12,15 +12,15 @@ export interface CirquitAction<State> extends Action {
   reducer: CirquitReducer<State>;
 }
 
-export const createCirquitAction = <State>(reducer: CirquitReducer<State>): CirquitAction<State> => ({
+export const createCirquitAction = <State>(
+  reducer: CirquitReducer<State>
+): CirquitAction<State> => ({
   type: CirquitActionType,
   name: reducer.name,
   reducer
 });
 
-export const createCirquitReducer = <State>(
-  initialState: State
-) => (
+export const createCirquitReducer = <State>(initialState: State) => (
   state: State = initialState,
   action: CirquitAction<State>
 ): State => {
@@ -32,4 +32,4 @@ export const createCirquitReducer = <State>(
       return state;
     }
   }
-}
+};

@@ -1,9 +1,11 @@
-import {createAction} from "./utils";
+import { createAction } from "./utils";
 
-export const add = (amount: number) => createAction(state => {
-  state.counter.count += amount;
-})
+export const add = (amount: number) =>
+  createAction(state => {
+    state.counter.count += amount;
+  });
 
-export const setCount = (count: number) => createAction(state => {
-  state.counter.count = count;
-});
+export const setCount = (count: number) =>
+  createAction(state => {
+    state.counter.count = count;
+  });

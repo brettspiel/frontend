@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { GlobalMenuComponent } from "./GlobalMenuComponent";
 import { Dispatch } from "redux";
-import {deleteUser} from "../../actions/user";
+import { deleteUser } from "../../actions/user";
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   handleClickLogout: () => {

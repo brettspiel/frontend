@@ -3,8 +3,8 @@ import { FormikBag } from "formik";
 import { StatusRepository } from "../../domain/repositories/StatusRepository";
 import { Dispatch } from "redux";
 import { history } from "../../history";
-import {createUser} from "../../actions/user";
-import {setConnectionInfo} from "../../actions/server";
+import { createUser } from "../../actions/user";
+import { setConnectionInfo } from "../../actions/server";
 
 export type ValidationErrors = { [K in keyof Partial<FormValues>]: string };
 

@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as io from "socket.io-client";
 import { connect } from "react-redux";
-import {State} from "../state";
+import { State } from "../state";
 
 export interface Props {
   server: State["server"];

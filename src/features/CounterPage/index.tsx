@@ -3,7 +3,7 @@ import { CounterPageComponent } from "./CounterPageComponent";
 import { CounterPresenter } from "./CounterPresenter";
 import { Dispatch } from "redux";
 import { CounterRepository } from "../../domain/repositories/CounterRepository";
-import {State} from "../../state";
+import { State } from "../../state";
 
 export interface OwnProps {
   socket: SocketIOClient.Socket;

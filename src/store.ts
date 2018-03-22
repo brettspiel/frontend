@@ -4,9 +4,9 @@ import thunk from "redux-thunk";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { history } from "./history";
-import {createCirquitReducer} from "./libs/redux-cirquit";
-import {initialState, State} from "./state";
-import {setAutoFreeze} from "immer";
+import { createCirquitReducer } from "./libs/redux-cirquit";
+import { initialState, State } from "./state";
+import { setAutoFreeze } from "immer";
 
 // redux-persist mutates state, so we need cancel auto freeze feature in immer
 setAutoFreeze(false);
@@ -26,6 +26,4 @@ const persistedReducer = persistReducer(
   createCirquitReducer(initialState)
 );
 
-export const store = createStore(persistedReducer, enhancer) as Store<
-  State
->;
+export const store = createStore(persistedReducer, enhancer) as Store<State>;

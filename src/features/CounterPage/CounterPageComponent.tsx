@@ -14,7 +14,9 @@ export class CounterPageComponent extends React.Component<Props> {
         <button onClick={() => this.props.presenter.handleClickIncrement(1)}>
           increment 1
         </button>
-        <button onClick={() => this.props.presenter.handleClickIncrementAsync(1)}>
+        <button
+          onClick={() => this.props.presenter.handleClickIncrementAsync(1)}
+        >
           increment 1 async
         </button>
       </div>
