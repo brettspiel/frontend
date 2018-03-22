@@ -6,6 +6,10 @@ import storage from "redux-persist/lib/storage";
 import { history } from "./history";
 import {createCirquitReducer} from "./libs/redux-cirquit";
 import {initialState, State} from "./state";
+import {setAutoFreeze} from "immer";
+
+// redux-persist mutates state, so we need cancel auto freeze feature in immer
+setAutoFreeze(false);
 
 const router = routerMiddleware(history);
 
