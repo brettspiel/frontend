@@ -3,9 +3,8 @@ import { FormikBag } from "formik";
 import { StatusRepository } from "../../domain/repositories/StatusRepository";
 import { Dispatch } from "redux";
 import { history } from "../../history";
-import {cirquit} from "../../libs/redux-cirquit";
-import uuid = require("uuid");
-import {State} from "../../state";
+import {createUser} from "../../actions/user";
+import {setConnectionInfo} from "../../actions/server";
 
 export type ValidationErrors = { [K in keyof Partial<FormValues>]: string };
 
@@ -35,18 +34,8 @@ export class LoginPagePresenter {
       const host = values.serverHost;
       const port = values.serverPort;
       await new StatusRepository(protocol, host, port).get();
-      this.dispatch(cirquit<State>(state => ({
-        ...state,
-        user: {
-          id: uuid.v4(),
-          name: values.userName
-        },
-        server: {
-          protocol,
-          host,
-          port
-        }
-      })));
+      this.dispatch(createUser(values.userName));
+      this.dispatch(setConnectionInfo(protocol, host, port));
       history.push("/counter");
     } catch {
       formikBag.setSubmitting(false);
