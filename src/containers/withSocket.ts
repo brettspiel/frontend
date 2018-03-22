@@ -2,10 +2,10 @@ import * as React from "react";
 import * as io from "socket.io-client";
 import { connect } from "react-redux";
 import { StoreState } from "../modules";
-import { ServerState } from "../modules/server";
+import {CirquitState} from "../modules/cirquit";
 
 export interface Props {
-  server: ServerState;
+  server: CirquitState["server"];
 }
 
 export const withSocket = (
@@ -15,7 +15,7 @@ export const withSocket = (
   class WithSocket extends React.Component<Props> {
     render() {
       const { server } = this.props;
-      if (!server.host || !server.port || !server.protocol) {
+      if (!server) {
         return fallbackRender();
       }
 
@@ -27,7 +27,7 @@ export const withSocket = (
   }
 
   const mapStateToProps = (state: StoreState) => ({
-    server: state.server
+    server: state.cirquit.server
   });
 
   return React.createElement(connect(mapStateToProps)(WithSocket));

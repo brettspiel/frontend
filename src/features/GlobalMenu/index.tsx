@@ -1,11 +1,14 @@
 import { connect } from "react-redux";
 import { GlobalMenuComponent } from "./GlobalMenuComponent";
 import { Dispatch } from "redux";
-import { userActions } from "../../modules/user";
+import {cirquit} from "../../modules/cirquit";
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   handleClickLogout: () => {
-    dispatch(userActions.delete());
+    dispatch(cirquit(state => {
+      const { user, ...otherState } = state;
+      return { ...otherState };
+    }));
   }
 });
 

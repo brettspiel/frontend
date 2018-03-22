@@ -10,7 +10,7 @@ export interface OwnProps {
 }
 
 const mapStateToProps = (state: StoreState) => ({
-  count: state.counter.count
+  count: state.cirquit.counter.count
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>, ownProps: OwnProps) => ({
