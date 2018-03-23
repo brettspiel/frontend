@@ -1,5 +1,5 @@
-import {ChatMessage} from "../models/ChatMessage";
-import {User} from "../models/User";
+import { ChatMessage } from "../models/ChatMessage";
+import { User } from "../models/User";
 
 export class LoungeChatRepository {
   constructor(private socket: SocketIOClient.Socket) {}

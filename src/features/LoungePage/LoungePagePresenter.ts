@@ -1,8 +1,8 @@
-import {User} from "../../domain/models/User";
-import {ChatSendFormValue} from "./LoungePageComponent";
-import {Dispatch} from "react-redux";
-import {LoungeChatRepository} from "../../domain/repositories/LoungeChatRepository";
-import {setLoungeChatMessages} from "../../actions/loungeChat";
+import { User } from "../../domain/models/User";
+import { ChatSendFormValue } from "./LoungePageComponent";
+import { Dispatch } from "react-redux";
+import { LoungeChatRepository } from "../../domain/repositories/LoungeChatRepository";
+import { setLoungeChatMessages } from "../../actions/loungeChat";
 
 export class LoungePagePresenter {
   constructor(
@@ -10,7 +10,9 @@ export class LoungePagePresenter {
     private loungeChatRepository: LoungeChatRepository,
     private user: User
   ) {
-    this.loungeChatRepository.onUpdate(messages => this.dispatch(setLoungeChatMessages(messages)));
+    this.loungeChatRepository.onUpdate(messages =>
+      this.dispatch(setLoungeChatMessages(messages))
+    );
   }
 
   handleSubmitChatMessage(values: ChatSendFormValue) {

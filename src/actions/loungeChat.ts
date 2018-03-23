@@ -1,6 +1,7 @@
 import { createAction } from "./utils";
-import {ChatMessage} from "../domain/models/ChatMessage";
+import { ChatMessage } from "../domain/models/ChatMessage";
 
-export const setLoungeChatMessages = (messages: ChatMessage[]) => createAction(state => {
-  state.lounge.chatMessages = messages;
-});
+export const setLoungeChatMessages = (messages: ChatMessage[]) =>
+  createAction(state => {
+    state.lounge.chatMessages = messages;
+  });

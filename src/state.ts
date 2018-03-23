@@ -1,5 +1,5 @@
 import { User } from "./domain/models/User";
-import {ChatMessage} from "./domain/models/ChatMessage";
+import { ChatMessage } from "./domain/models/ChatMessage";
 
 export interface State {
   counter: {
@@ -13,7 +13,7 @@ export interface State {
   };
   lounge: {
     chatMessages: ChatMessage[];
-  }
+  };
 }
 
 export const initialState: State = {

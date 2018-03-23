@@ -28,8 +28,12 @@ export class Routes extends React.Component {
           render={() =>
             withLogin(user =>
               withSocket(socketManager => (
-              <LoungePage socket={socketManager.socket("/chat/lounge")} user={user}/>
-            )))
+                <LoungePage
+                  socket={socketManager.socket("/chat/lounge")}
+                  user={user}
+                />
+              ))
+            )
           }
         />
       </Switch>
