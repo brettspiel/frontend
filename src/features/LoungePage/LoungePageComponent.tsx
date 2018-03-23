@@ -5,9 +5,12 @@ import {DraggableCore} from 'react-draggable';
 import {withFormik} from "formik";
 import { Form, Divider, Feed } from "semantic-ui-react";
 import * as styles from "./styles.css";
+import {ChatMessage} from "../../domain/models/ChatMessage";
+import {reverse} from "lodash";
 
 export interface Props {
   user: User;
+  chatMessages: ChatMessage[];
   presenter: LoungePagePresenter;
 }
 
@@ -74,7 +77,7 @@ export class LoungePageComponent extends React.Component<Props, State> {
             height: `calc(${defaultChatAreaHeight} - ${this.state.heightDiff}px)`,
           }}>
             {
-              [].map((message: any) => (
+              reverse(this.props.chatMessages).map(message => (
                 <Feed.Event key={message.id}>
                   <Feed.Label icon={message.user.id === this.props.user.id ? 'user' : 'user outline'} />
                   <Feed.Content>
