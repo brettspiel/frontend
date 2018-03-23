@@ -4,7 +4,7 @@ import { LoginPage } from "./features/LoginPage";
 import { withSocket } from "./containers/withSocket";
 import { CounterPage } from "./features/CounterPage";
 import { withLogin } from "./containers/withLogin";
-import {LoungePageComponent} from "./features/LoungePage/LoungePageComponent";
+import { LoungePage } from "./features/LoungePage";
 
 export class Routes extends React.Component {
   render() {
@@ -26,9 +26,10 @@ export class Routes extends React.Component {
           path="/"
           exact
           render={() =>
-            withLogin(user => (
-              <LoungePageComponent user={user}/>
-            ))
+            withLogin(user =>
+              withSocket(socketManager => (
+              <LoungePage socket={socketManager.socket("/chat/lounge")} user={user}/>
+            )))
           }
         />
       </Switch>
