@@ -36,7 +36,7 @@ export class LoginPagePresenter {
       await new StatusRepository(protocol, host, port).get();
       this.dispatch(createUser(values.userName));
       this.dispatch(setConnectionInfo(protocol, host, port));
-      history.push("/counter");
+      history.push("/");
     } catch {
       formikBag.setSubmitting(false);
     }
