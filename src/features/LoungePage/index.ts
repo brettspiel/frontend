@@ -19,8 +19,7 @@ const mapStateToProps = (state: State, ownProps: OwnProps) => ({
 const mapDispatchToProps = (dispatch: Dispatch<any>, ownProps: OwnProps) => ({
   presenter: new LoungePagePresenter(
     dispatch,
-    new LoungeChatRepository(ownProps.socket),
-    ownProps.user
+    new LoungeChatRepository(ownProps.socket)
   )
 });
 
