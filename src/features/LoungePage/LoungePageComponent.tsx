@@ -15,13 +15,6 @@ export interface FormProps {
 }
 
 export class LoungePageComponent extends React.Component<Props> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      heightDiff: 0
-    };
-  }
-
   render() {
     return (
       <Chat
