@@ -1,8 +1,10 @@
 import * as React from "react";
+import { Segment } from "semantic-ui-react";
 import { User } from "../../domain/models/User";
 import { LoungePagePresenter } from "./LoungePagePresenter";
 import { ChatMessage } from "../../domain/models/ChatMessage";
 import { Chat } from "../../components/Chat";
+import * as styles from "./styles.css";
 
 export interface Props {
   user: User;
@@ -23,7 +25,11 @@ export class LoungePageComponent extends React.Component<Props> {
         chatMessages={this.props.chatMessages}
         handleSubmit={this.props.presenter.handleSubmitChatMessage}
       >
-        hello
+        <div className={styles.page}>
+          <Segment>
+            hello
+          </Segment>
+        </div>
       </Chat>
     );
   }

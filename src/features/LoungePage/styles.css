@@ -1,17 +1,3 @@
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.mainArea {
-  flex-grow: 1;
-}
-
-.divider {
-  cursor: ns-resize;
-}
-
-.chatArea {
-  overflow-y: scroll;
+.page {
+  margin: 0 1em;
 }
