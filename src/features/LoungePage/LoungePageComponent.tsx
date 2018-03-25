@@ -1,10 +1,12 @@
 import * as React from "react";
-import { Header, Icon, Card } from "semantic-ui-react";
+import { Header, Icon, Tab } from "semantic-ui-react";
 import { User } from "../../domain/models/User";
 import { LoungePagePresenter } from "./LoungePagePresenter";
 import { ChatMessage } from "../../domain/models/ChatMessage";
 import { Chat } from "../../components/Chat";
 import * as styles from "./styles.css";
+import {GameRoomListingTabPane} from "./GameRoomListingTabPane";
+import {GameRoomCreationTabPane} from "./GameRoomCreationTabPane";
 
 export interface Props {
   user: User;
@@ -15,60 +17,6 @@ export interface Props {
 export interface FormProps {
   presenter: LoungePagePresenter;
 }
-
-const rooms = [
-  {
-    id: "adlwjeofwjeojg",
-    game: "ドミニオソ",
-    owner: { id: "aaa", name: "ほげ太郎" },
-    players: [
-      { id: "aaa", name: "ほげ太郎" },
-      { id: "bbb", name: "bbb" },
-      { id: "ccc", name: "ccc" }
-    ],
-    status: "wanted"
-  },
-  {
-    id: "wef",
-    game: "Scy+he",
-    owner: { id: "wefwef", name: "Nils Frahm" },
-    players: [
-      { id: "wefwef", name: "Nils Frahm" },
-      { id: "fff", name: "Nessy polly" },
-      { id: "zxcv", name: "Bett Scott" }
-    ],
-    status: "started"
-  },
-  {
-    id: "ggrgrfgr",
-    game: "ジャンケン",
-    owner: { id: "a", name: "master" },
-    players: [
-      { id: "a", name: "master" },
-      { id: "b", name: "naster" }
-    ],
-    status: "finished"
-  },
-  {
-    id: "qwrgwg",
-    game: "Catam",
-    owner: { id: "f", name: "f" },
-    players: [
-      { id: "f", name: "f" },
-    ],
-    status: "wanted"
-  },
-  {
-    id: "hrhrhrhrh",
-    game: "Hex",
-    owner: { id: "aw", name: "awe" },
-    players: [
-      { id: "aw", name: "awe" },
-      { id: "fffglkj", name: "woo!" }
-    ],
-    status: "finished"
-  }
-];
 
 export class LoungePageComponent extends React.Component<Props> {
   render() {
@@ -86,26 +34,10 @@ export class LoungePageComponent extends React.Component<Props> {
               Rooms
             </Header.Content>
           </Header>
-          <Card.Group>
-            {
-              rooms.map(room => (
-                <Card
-                  key={room.id}
-                  header={room.game}
-                  fluid
-                  extra={(
-                    <div>
-                      {room.players.map(player => (
-                        <div key={player.id}>
-                          <Icon name='user' /> {player.name}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                />
-              ))
-            }
-          </Card.Group>
+          <Tab panes={[
+            { menuItem: "ゲームに参加する", render: () => <Tab.Pane><GameRoomListingTabPane/></Tab.Pane> },
+            { menuItem: "ゲームを始める", render: () => <Tab.Pane><GameRoomCreationTabPane/></Tab.Pane> }
+          ]} />
         </div>
       </Chat>
     );
