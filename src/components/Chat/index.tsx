@@ -1,7 +1,7 @@
 import * as React from "react";
 import { DraggableCore } from "react-draggable";
 import { Divider, Feed } from "semantic-ui-react";
-import reverse = require("lodash/reverse");
+import {reverse, slice} from "lodash";
 import * as styles from "./styles.css";
 import { ChatMessage } from "../../domain/models/ChatMessage";
 import { User } from "../../domain/models/User";
@@ -50,7 +50,7 @@ export class Chat extends React.Component<Props, State> {
               }px)`
             }}
           >
-            {reverse(this.props.chatMessages).map(message => (
+            {reverse(slice(this.props.chatMessages)).map(message => (
               <Feed.Event key={message.id}>
                 <Feed.Label
                   icon={
