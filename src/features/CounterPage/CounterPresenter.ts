@@ -12,11 +12,11 @@ export class CounterPresenter {
     });
   }
 
-  handleClickIncrement = (amount: number) => {
+  handleClickIncrement(amount: number) {
     this.increment(amount);
   }
 
-  handleClickIncrementAsync = (amount: number) => {
+  handleClickIncrementAsync(amount: number) {
     setTimeout(() => {
       this.increment(amount);
     }, 1000);

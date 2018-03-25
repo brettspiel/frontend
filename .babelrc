@@ -5,6 +5,7 @@
     "@babel/preset-stage-2"
   ],
   "plugins": [
-    "transform-inline-environment-variables"
+    "transform-inline-environment-variables",
+    "autobind-class-methods"
   ]
 }
