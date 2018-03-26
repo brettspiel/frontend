@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Form } from "semantic-ui-react";
 import { Formik, Field, FormikProps, FieldProps } from "formik";
-import {GameType} from "../../domain/models/GameRoom";
 import {ErrorTip} from "../../components/ErrorTip";
+import {GameType} from "../../domain/models/GameRoom";
 
 export interface FormValues {
   gameType: GameType;
