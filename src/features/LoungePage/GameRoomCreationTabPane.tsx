@@ -1,8 +1,7 @@
 import * as React from "react";
 import { Form } from "semantic-ui-react";
-import { Formik, Field, FormikProps, FieldProps } from "formik";
-import {ErrorTip} from "../../components/ErrorTip";
 import {GameType} from "../../domain/models/GameRoom";
+import {ErrorTip} from "../../components/ErrorTip";
 
 export interface FormValues {
   gameType: GameType;
@@ -10,42 +9,27 @@ export interface FormValues {
 
 export interface Props {
   handleSubmit: () => void;
-  handleValidate: () => void;
+  handleValidate: () => { [K in keyof FormValues]?: boolean };
 }
 
 export class GameRoomCreationTabPane extends React.Component<Props> {
   render() {
     return (
-      <Formik
-        initialValues={{}}
-        onSubmit={console.log}
-        validate={console.log}
-        render={this.renderForm}
-      />
-    )
-  }
-
-  private renderForm = (_formikBag: FormikProps<FormValues>) => {
-    return (
       <Form>
-        <Field
-          name="gameType"
-          render={this.renderGameTypeField}
-        />
+        <Form.Field error={false}>
+          <label>ゲーム</label>
+          <ErrorTip error={undefined}>
+            <Form.Dropdown
+              fluid
+              selection
+              options={[
+                { text: "a", value: "a" },
+                { text: "b", value: "b" },
+              ]}
+            />
+          </ErrorTip>
+        </Form.Field>
       </Form>
-    );
-  }
-
-  private renderGameTypeField = ({ field, form }: FieldProps<FormValues>) => {
-    return (
-      <Form.Field error={!!form.errors.gameType}>
-        <label>ゲーム</label>
-        <ErrorTip error={form.errors.gameType}>
-          <Form.Dropdown {...field} options={[
-            { text: "a", value: "a" }
-          ]} />
-        </ErrorTip>
-      </Form.Field>
     )
   }
 }

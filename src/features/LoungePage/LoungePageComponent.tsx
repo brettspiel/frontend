@@ -35,11 +35,30 @@ export class LoungePageComponent extends React.Component<Props> {
             </Header.Content>
           </Header>
           <Tab panes={[
-            { menuItem: "ゲームに参加する", render: () => <Tab.Pane><GameRoomListingTabPane/></Tab.Pane> },
-            { menuItem: "ゲームを始める", render: () => <Tab.Pane><GameRoomCreationTabPane/></Tab.Pane> }
+            { menuItem: "ゲームに参加する", render: this.renderListingTabPane },
+            { menuItem: "ゲームを始める", render: this.renderCreationTabPane }
           ]} />
         </div>
       </Chat>
+    );
+  }
+
+  private renderListingTabPane = () => {
+    return (
+      <Tab.Pane>
+        <GameRoomListingTabPane/>
+      </Tab.Pane>
+    );
+  }
+
+  private renderCreationTabPane = () => {
+    return (
+      <Tab.Pane>
+        <GameRoomCreationTabPane
+          handleSubmit={console.log}
+          handleValidate={() => ({})}
+        />
+      </Tab.Pane>
     );
   }
 }
