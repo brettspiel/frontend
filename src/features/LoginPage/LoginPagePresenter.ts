@@ -11,7 +11,7 @@ export type ValidationErrors = { [K in keyof Partial<FormValues>]: string };
 export class LoginPagePresenter {
   constructor(private dispatch: Dispatch<any>) {}
 
-  handleValidate(values: FormValues): ValidationErrors {
+  handleValidate = (values: FormValues): ValidationErrors => {
     const errors: ValidationErrors = {};
     if (!values.userName) {
       errors.userName = "必須です";
@@ -25,10 +25,10 @@ export class LoginPagePresenter {
     return errors;
   };
 
-  async handleSubmit (
+  handleSubmit = async (
     values: FormValues,
     formikBag: FormikBag<{}, FormValues>
-  ): Promise<void> {
+  ): Promise<void> => {
     try {
       const protocol = location.protocol === "https:" ? "https:" : "http:";
       const host = values.serverHost;
