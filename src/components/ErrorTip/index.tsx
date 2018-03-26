@@ -3,7 +3,7 @@ import { Tooltip } from "../Tooltip";
 import "./styles.css";
 
 export interface Props {
-  error: string;
+  error?: string;
   [key: string]: any;
 }
 
@@ -13,7 +13,6 @@ export class ErrorTip extends React.Component<Props> {
     return (
       <Tooltip
         text={error}
-        visible={!!error}
         data-balloon-error-message-target-element
         {...otherProps}
       >

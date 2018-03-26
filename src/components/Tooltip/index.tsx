@@ -2,10 +2,9 @@ import * as React from "react";
 import "./styles.css";
 
 export interface Props {
-  text: string;
+  text?: string;
   position?: "up" | "down" | "left" | "right";
   size?: "small" | "medium" | "large" | "fit";
-  visible?: boolean;
   [key: string]: any;
 }
 
@@ -16,7 +15,6 @@ export class Tooltip extends React.Component<Props> {
         text,
         position,
         size,
-        visible,
         children,
         ...otherProps
       } = this.props;
@@ -24,7 +22,7 @@ export class Tooltip extends React.Component<Props> {
         "data-balloon": text,
         "data-balloon-pos": position || "up",
         "data-balloon-length": size,
-        "data-balloon-visible": visible,
+        "data-balloon-visible": text ? "" : undefined,
         ...otherProps
       });
       return el;
