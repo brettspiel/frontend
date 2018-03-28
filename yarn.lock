@@ -5176,6 +5176,10 @@ reduce-function-call@^1.0.1, reduce-function-call@^1.0.2:
   dependencies:
     balanced-match "^0.4.2"
 
+redux-cirquit@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/redux-cirquit/-/redux-cirquit-1.1.0.tgz#e7bb1d43ce7e049449a01cd223f80cc2b0c6a212"
+
 redux-persist@^5.9.1:
   version "5.9.1"
   resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-5.9.1.tgz#83bd4abd526ef768f63fceee338fa9d8ed6552d6"
