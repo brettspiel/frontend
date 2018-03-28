@@ -13,7 +13,10 @@ export class LoungePagePresenter {
     );
   }
 
-  handleSubmitChatMessage = async (user: User, message: string): Promise<void> => {
+  handleSubmitChatMessage = async (
+    user: User,
+    message: string
+  ): Promise<void> => {
     this.loungeChatRepository.add(user, message);
-  }
+  };
 }
