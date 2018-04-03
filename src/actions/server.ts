@@ -5,10 +5,13 @@ export const setConnectionInfo = (
   host: string,
   port: number
 ) =>
-  createAction(state => {
-    state.server = {
-      protocol,
-      host,
-      port
-    };
-  }, { protocol, host, port });
+  createAction(
+    state => {
+      state.server = {
+        protocol,
+        host,
+        port
+      };
+    },
+    { protocol, host, port }
+  );

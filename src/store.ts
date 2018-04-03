@@ -1,4 +1,10 @@
-import { createStore, applyMiddleware, compose, Store, combineReducers } from "redux";
+import {
+  createStore,
+  applyMiddleware,
+  compose,
+  Store,
+  combineReducers
+} from "redux";
 import { createCirquitReducer } from "redux-cirquit";
 import { routerMiddleware } from "react-router-redux";
 import thunk from "redux-thunk";
