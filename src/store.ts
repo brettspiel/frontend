@@ -3,10 +3,10 @@ import {
   applyMiddleware,
   compose,
   Store,
-  combineReducers
+  combineReducers,
 } from "redux";
 import { createCirquitReducer } from "redux-cirquit";
-import { routerMiddleware } from "react-router-redux";
+import { routerMiddleware, routerReducer, RouterState } from "react-router-redux";
 import thunk from "redux-thunk";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -26,6 +26,7 @@ const enhancer = compose(
 
 export interface ReduxState {
   app: State;
+  routing: RouterState;
 }
 
 const persistedReducer = persistReducer(
@@ -34,7 +35,8 @@ const persistedReducer = persistReducer(
     storage
   },
   combineReducers<ReduxState>({
-    app: createCirquitReducer(initialState, { namespace: "app" })
+    app: createCirquitReducer(initialState, { namespace: "app" }),
+    routing: routerReducer
   })
 );
 
