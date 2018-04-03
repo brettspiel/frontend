@@ -7,7 +7,7 @@ export const createUser = (name: string) =>
       id: uuid.v4(),
       name
     };
-  });
+  }, { name });
 
 export const deleteUser = () =>
   createAction(state => {

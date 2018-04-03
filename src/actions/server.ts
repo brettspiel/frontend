@@ -11,4 +11,4 @@ export const setConnectionInfo = (
       host,
       port
     };
-  });
+  }, { protocol, host, port });
