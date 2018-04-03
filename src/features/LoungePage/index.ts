@@ -4,16 +4,16 @@ import { LoungePageComponent } from "./LoungePageComponent";
 import { LoungePagePresenter } from "./LoungePagePresenter";
 import { User } from "../../domain/models/User";
 import { LoungeChatRepository } from "../../domain/repositories/LoungeChatRepository";
-import { State } from "../../state";
+import { ReduxState } from "../../store";
 
 export interface OwnProps {
   socket: SocketIOClient.Socket;
   user: User;
 }
 
-const mapStateToProps = (state: State, ownProps: OwnProps) => ({
+const mapStateToProps = (state: ReduxState, ownProps: OwnProps) => ({
   user: ownProps.user,
-  chatMessages: state.lounge.chatMessages
+  chatMessages: state.app.lounge.chatMessages
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>, ownProps: OwnProps) => ({

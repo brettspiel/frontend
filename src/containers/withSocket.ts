@@ -2,6 +2,7 @@ import * as React from "react";
 import * as io from "socket.io-client";
 import { connect } from "react-redux";
 import { State } from "../state";
+import { ReduxState } from "../store";
 
 export interface Props {
   server: State["server"];
@@ -25,8 +26,8 @@ export const withSocket = (
     }
   }
 
-  const mapStateToProps = (state: State) => ({
-    server: state.server
+  const mapStateToProps = (state: ReduxState) => ({
+    server: state.app.server
   });
 
   return React.createElement(connect(mapStateToProps)(WithSocket));
