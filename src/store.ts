@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, compose, Store } from "redux";
+import { createStore, applyMiddleware, compose, Store, combineReducers } from "redux";
 import { createCirquitReducer } from "redux-cirquit";
 import { routerMiddleware } from "react-router-redux";
 import thunk from "redux-thunk";
@@ -18,12 +18,18 @@ const enhancer = compose(
   window["devToolsExtension"] ? window["devToolsExtension"]() : (f: any) => f
 );
 
+export interface ReduxState {
+  app: State;
+}
+
 const persistedReducer = persistReducer(
   {
     key: "root",
     storage
   },
-  createCirquitReducer(initialState)
+  combineReducers<ReduxState>({
+    app: createCirquitReducer(initialState, { namespace: "app" })
+  })
 );
 
 export const store = createStore(persistedReducer, enhancer) as Store<State>;
