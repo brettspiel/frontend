@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { User } from "../domain/models/User";
 import { Redirect } from "react-router";
 import { GlobalMenu } from "../features/GlobalMenu";
-import { State } from "../state";
+import { ReduxState } from "../store";
 
 export interface Props {
   user: User;
@@ -21,8 +21,8 @@ export const withLogin = (render: (user: User) => React.ReactNode) => {
     }
   }
 
-  const mapStateToProps = (state: State) => ({
-    user: state.user
+  const mapStateToProps = (state: ReduxState) => ({
+    user: state.app.user
   });
 
   return React.createElement(connect(mapStateToProps)(WithLogin));

@@ -3,14 +3,14 @@ import { CounterPageComponent } from "./CounterPageComponent";
 import { CounterPresenter } from "./CounterPresenter";
 import { Dispatch } from "redux";
 import { CounterRepository } from "../../domain/repositories/CounterRepository";
-import { State } from "../../state";
+import { ReduxState } from "../../store";
 
 export interface OwnProps {
   socket: SocketIOClient.Socket;
 }
 
-const mapStateToProps = (state: State) => ({
-  count: state.counter.count
+const mapStateToProps = (state: ReduxState) => ({
+  count: state.app.counter.count
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>, ownProps: OwnProps) => ({
